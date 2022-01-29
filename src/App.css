@@ -1,38 +1,107 @@
 .App {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#App__map {
+  grid-column: 1 / 5;
+  grid-row: 1 / -1
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App__navigation{
+  grid-column:  5 / 6;
+  grid-row: 1 / -1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: rgba(64, 44, 134, 0.733);
+  flex-wrap: wrap;
+}
+.navigation__title{
+  flex: 100%;
+  font-size: 1.1rem;
+}
+.navigation__info{
+  text-align: left;
+  border:blanchedalmond;
+  border-top-style: dotted;
+  border-bottom-style: dotted;
+  /* padding: 1rem; */
+}
+.navigation__info--car-color{
+  display:block;
+  height: 0.625rem;
+  width:100%;
+  border: black;
+  border-radius: 1rem;
+  border-style: solid;
+}
+.navigation__bar{
+  flex:100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+.navigation__box-for-spaces{
+  height: 6.25rem;
+  width: 6.25rem;
+}
+.baterry-items {
+  display: flex;
+  /* flex: 80%; */
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.battery {
+  height: 3.75rem;
+  width: 12.25rem;
+  border: 0.357rem solid black;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.battery::after {
+  height: 1.25rem;
+  width: 0.9375rem;
+  background-color: black;
+  content: '';
+  position: absolute;
+  right: -0.9375rem;
+  top: 1.125rem;
+  bottom: 0.3125rem;
 }
+
+.battery_status_discharged {
+  background: linear-gradient(to left, blanchedalmond, blanchedalmonde 80%, red 0%);
+}
+
+.battery_status_halfway {
+  background: linear-gradient(to left, blanchedalmond, blanchedalmond 50%, orange 0%);
+}
+
+.battery_status_charged-is-not-full {
+  background: linear-gradient(to left, blanchedalmond, blanchedalmond 5%, green 0%);
+  text-align: center;
+}
+.battery_status_charged-is-full {
+  background: linear-gradient(to left, blanchedalmond, blanchedalmond 0%, green 0%);
+  text-align: center;
+}
+.navigation__bar--btn{
+  margin-bottom: 1.5rem;
+  margin-top: auto;
+  background-color: blanchedalmond;
+  border: 0.125rem solid black;
+  max-height: 2rem;
+}
+.navigation__bar--btn:hover{
+  color: antiquewhite;
+  background-color: black;
+  box-shadow: 0.2rem -0.2rem green;
+  cursor: pointer;
+
+}
+
