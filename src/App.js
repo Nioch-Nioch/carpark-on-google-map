@@ -12,7 +12,7 @@ import markerUnavailable from './image/unavailable.png'
 import mapStyle from './mapStyle';
 
 
-const KEY= 'AIzaSyDYPZkDalhVMmIzk4fP-18perVQfnJ493k';
+const KEY= 'AIzaSyDYPZkDalhVMmIzk4fP-18perVQfnJ493k'; //usually it should be located in .env.local
 const URL_BASE = 'https://dev.vozilla.pl/api-client-portal/map?objectType='
 const URL_PARKING = URL_BASE + 'PARKING';
 const URL_POI = URL_BASE + 'POI';
