@@ -1,22 +1,15 @@
-import 
-  React, 
-  { useEffect, 
-    useState } 
-  from 'react';
-import './App.css';
-import { 
-  GoogleMap, 
-  withScriptjs, 
-  withGoogleMap, 
-  Marker,
-  InfoWindow }
-  from 'react-google-maps';
+import React, { useEffect, useState } from 'react';
+
+import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
-import mpaStyle from './mpaStyle';
 import axios from 'axios';
+
 import Navigation from './components/Navigation.js';
+
+import './App.css';
 import markerAvailable from './image/available.png'
 import markerUnavailable from './image/unavailable.png'
+import mapStyle from './mapStyle';
 
 
 const KEY= 'AIzaSyDYPZkDalhVMmIzk4fP-18perVQfnJ493k';
@@ -24,7 +17,6 @@ const URL_BASE = 'https://dev.vozilla.pl/api-client-portal/map?objectType='
 const URL_PARKING = URL_BASE + 'PARKING';
 const URL_POI = URL_BASE + 'POI';
 const URL_VEHICLE = URL_BASE + 'VEHICLE';
-
 
 function App() {
   const [parking, setParking] = useState(null);
@@ -77,7 +69,7 @@ function App() {
     <GoogleMap 
       defaultZoom={zoom} 
       defaultCenter={{ lat: 51.107883, lng: 17.038538 }}
-      defaultOptions={{styles: mpaStyle}} 
+      defaultOptions={{styles: mapStyle}} 
     > 
       <MarkerClusterer
         onClick={props.onMarkerClustererClick}
@@ -143,7 +135,7 @@ function App() {
           }}
         >
           <div>
-            {selectedMarker.discriminator.toUpperCase() === "VEHICLE" ? <div>{selectedMarker.name.toUpperCase()} <br/>Poziom baterii: {selectedMarker.batteryLevelPct} %</div> : <></>}
+            {selectedMarker.discriminator.toUpperCase() === "VEHICLE" ? <div>{selectedMarker.name.toUpperCase()} <br/>Battery level: {selectedMarker.batteryLevelPct} %</div> : <></>}
             {selectedMarker.discriminator.toUpperCase() === "PARKING" ? <div>{selectedMarker.discriminator.toUpperCase()}<br/>{selectedMarker.address.city}, {selectedMarker.address.street} {selectedMarker.address.house}</div> : <></>}
             {selectedMarker.discriminator.toUpperCase() === "POI" ? <div>{selectedMarker.description.toUpperCase()}<br/>{selectedMarker.address.city}, {selectedMarker.address.street} {selectedMarker.address.house}</div> : <></>}         
           </div> 
@@ -164,11 +156,11 @@ function App() {
       </main>
       <nav className='App__navigation'>
         {selectedMarker && <Navigation selectedMarker={selectedMarker} />}
-        <div class='navigation__bar'>
-                  <button class='navigation__bar--btn' onClick={() => {setSelectedMarkers("VEHICLE"); setZoom(7)}}>Cars</button>
-                  <button class='navigation__bar--btn' onClick={() => {setSelectedMarkers("PARKING"); setZoom(7)}}>Parking</button>
-                  <button class='navigation__bar--btn' onClick={() => {setSelectedMarkers("POI"); setZoom(7)}}>POI</button>
-                  <button class='navigation__bar--btn' onClick={() => {setSelectedMarkers("ALL"); setZoom(7)}}>ALL</button>
+        <div className='navigation__bar'>
+                  <button className='navigation__bar--btn' onClick={() => {setSelectedMarkers("VEHICLE"); setZoom(7)}}>CARS</button>
+                  <button className='navigation__bar--btn' onClick={() => {setSelectedMarkers("PARKING"); setZoom(7)}}>CAR-PARK</button>
+                  <button className='navigation__bar--btn' onClick={() => {setSelectedMarkers("POI"); setZoom(7)}}>POI</button>
+                  <button className='navigation__bar--btn' onClick={() => {setSelectedMarkers("ALL"); setZoom(7)}}>ALL</button>
          </div> 
       </nav>
     </div>

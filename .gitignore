@@ -6,6 +6,9 @@
 .pnp.js
 /src/data-only-for-me
 /src/data
+/src/context
+/src/components/WrappedMap.js
+
 
 # testing
 /coverage
