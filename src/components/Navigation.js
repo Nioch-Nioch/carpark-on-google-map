@@ -37,7 +37,7 @@ function Navigation({ selectedMarker }) {
                 <h2 className='navigation__title navigation__title-second'>Available parking places: {selectedMarker.availableSpacesCount}</h2>
                 <div className='navigation__box-for-spaces' style={{backgroundColor: 'white', display: `grid`, gridTemplate: '1fr / auto'}}>
                   <div className='navigation__box-for-spaces--available' style={{backgroundColor: 'green', gridColumn: "1 / " + (selectedMarker.availableSpacesCount + 1)}}></div>
-                  <div className='navigation__box-for-spaces--unavailable' style={{backgroundColor: 'red', gridColumn: (selectedMarker.availableSpacesCount) + " / " + (selectedMarker.spacesCount + 1)}}></div>
+                  <div className='navigation__box-for-spaces--unavailable' style={{backgroundColor: 'red', gridColumn: (selectedMarker.availableSpacesCount + 1) + " / " + (selectedMarker.spacesCount)}}></div>
                 </div>              
               </div> 
             : <></>}
