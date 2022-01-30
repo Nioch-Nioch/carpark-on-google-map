@@ -1,5 +1,5 @@
-function Navigation(selectedMarker) {
-    selectedMarker = selectedMarker.selectedMarker;
+function Navigation({selectedMarker}) {
+    // selectedMarker = selectedMarker.selectedMarker;
     return ( 
         <nav>
             {selectedMarker && selectedMarker.discriminator.toUpperCase() === "VEHICLE" 
