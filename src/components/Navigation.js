@@ -1,8 +1,8 @@
 function Navigation({ selectedMarker }) {
     return ( 
-        <nav>
+        <>
             {selectedMarker && selectedMarker.discriminator.toUpperCase() === "VEHICLE" 
-          ? <div className='App__navigation--vehicle'>
+          ? <div className='navigation__article navigation__article-vehicle'>
               <h1 className='navigation__title'>{selectedMarker.name.toUpperCase()}</h1>
               <article className='navigation__info'>
                 Car range: {selectedMarker.rangeKm} Kilometers <br/>
@@ -29,27 +29,32 @@ function Navigation({ selectedMarker }) {
           : <></>}
             
           {selectedMarker && selectedMarker.discriminator.toUpperCase() === "PARKING" 
-            ? <div className='App__navigation--parking'>
+            ? <div className='navigation__article navigation__article-parking'>
                 <h1 className='navigation__title'>{selectedMarker.description.toUpperCase()}</h1>
                 <article className='navigation__info'>
-                  Adress: {selectedMarker.address.city}, {selectedMarker.address.street} {selectedMarker.address.house}
+                  <span style={{fontWeight:"bold"}}>Adress: </span>{selectedMarker.address.city && selectedMarker.address.city}, {selectedMarker.address.street && selectedMarker.address.street} {selectedMarker.address.house && selectedMarker.address.house}
                 </article>
-                <h2 className='navigation__title navigation__title-second'>Available places: {selectedMarker.availableSpacesCount}</h2>
+                <h2 className='navigation__title navigation__title-second'>Available parking places: {selectedMarker.availableSpacesCount}</h2>
                 <div className='navigation__box-for-spaces' style={{backgroundColor: 'white', display: `grid`, gridTemplate: '1fr / auto'}}>
                   <div className='navigation__box-for-spaces--available' style={{backgroundColor: 'green', gridColumn: "1 / " + (selectedMarker.availableSpacesCount + 1)}}></div>
-                  <div className='navigation__box-for-spaces--unavailable' style={{backgroundColor: 'red', gridColumn: selectedMarker.availableSpacesCount + " / " + selectedMarker.spacesCount}}></div>
+                  <div className='navigation__box-for-spaces--unavailable' style={{backgroundColor: 'red', gridColumn: (selectedMarker.availableSpacesCount) + " / " + (selectedMarker.spacesCount + 1)}}></div>
                 </div>              
               </div> 
             : <></>}
             
           {selectedMarker && selectedMarker.discriminator.toUpperCase() === "POI" 
-            ? 
-              <div>
-                {selectedMarker.description.toUpperCase()}<br/>
-                {selectedMarker.address.city}, {selectedMarker.address.street} {selectedMarker.address.house}
-              </div> 
+            ? <div className='navigation__article navigation__article-poi'>
+                <h1 className='navigation__title'>{selectedMarker.description.toUpperCase()}</h1>
+                <article className='navigation__info'>
+                  <span style={{fontWeight:"bold"}}>Adress: </span>{selectedMarker.address.city && selectedMarker.address.city}, {selectedMarker.address.street && selectedMarker.address.street} {selectedMarker.address.house && selectedMarker.address.house}
+                </article>
+              <h2 className='navigation__title navigation__title-second'>Information about that place: </h2>
+              <article className='navigation__info navigation__info-second'>
+                  {selectedMarker.category}
+              </article>            
+            </div> 
             : <></>} 
-        </nav>
+        </>
      );
 }
 
